@@ -1,0 +1,334 @@
+# Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
+
+## 7.3.24 - Control Structures - While loops
+
+### Do Now
+
+Create a `while` loop that does the same things as the following `for` loop
+
+    for i = 1:11
+        variable(i) = i^2;
+    end
+
+>       variable = 1:10;            % Predefine the vector for speed
+>
+>       i = 1;                      % set the first value for i
+>
+>       while 11 >= i               % Iterate whenever i is less than or equal to 11
+>
+>           variable(i) = i^2;      % Write the value of i^2
+>
+>           i = i+1;                % Add 1 of i and run it again
+>
+>       end
+
+Expand this code so that it compares the vector created by the `for` loop and the `while` loops
+
+>       i = 1;
+>
+>       for j = 1:11
+>           variable(j) = j^2
+>       end
+>
+>       while 11>=i
+>           variable2(i) = i^2;
+>           i = i+1;
+>       end
+>
+>       if variable == variable2
+>           disp('Equal')
+>       else
+>           disp('Not Equal)
+>       end
+
+### While Loops
+
+- `while` loops evaluate a boolean argument and will run for as long as that boolean value is `TRUE`
+- to make a `while` loop operate like a `for` loop, you need to manually iterate the counter, akin to `i++` in similar languages
+
+### Exam Review
+
+yeah I don't type fast enough to cover everything on the written portion, sorry
+
+#### Question 10
+
+Under what circumstances are function definitions created in a '.m file' or script recognized in the comand window as a function (ie they can accept input arguments and will create outputs)
+
+> He was looking for the definition of a local function -- They can be created and will have outputs but will not be able to be called in the command window because they are local and not global
+
+### Final Project overview
+
+- Project Components:
+  - Description of enginering problem and solution space
+  - Development of Script/Function to perform analysis on:
+
+    1. Theoretical Solutions (ie Equations describing the engineering problem)
+    2. Data sets: numerical data describing the engineering problem
+  - Presentation of results
+    - Short technical writeup(3-4 pages) containing:
+
+      1. Background of Egineering Problem
+      2. Pertinent Descriptions of functions or routines used for analysis
+      3. Results in the form of graphs/animations depicing analysis results
+    - Technical presentation(5-6 slides, 5-7 minute presentation)
+
+### Homework Review
+
+#### Example 1, GPT generation
+
+Issue: Could not get the color plot working
+
+- Cooling_coefficient(k) was hardcoded after asking for the user input
+- No call of `pcolor()` command
+  - `pcolor` requires a matrix argument for the `c` value, no extra dimensions to plot
+
+#### Example 2, GPT generation
+
+- Defined the size of the object as 20x20, arbitary unit
+- Established the number of steps
+- GPT showed an object cooling to room temperature without using Newton's Law of Cooling
+  - Created a linear relationship of the cooling
+  - Cooling is an exponential relationship
+
+### Where is GPT Useful?
+
+- Explaining a concept
+- Really good at concept
+- Commented code is really helpful
+
+### Where does it fall short?
+
+- It often makes mistakes
+  - Pseudoscience calculations (see example 2)
+- It sometimes goes back on its work (see example 1)
+
+## 5.3.24 - Control Structures - For loops
+
+### Control Structures
+
+Example code:
+
+    for i = 1:length(altitude_m)
+        for j = 1:length(velocity_range_mps)
+            drag_force_N(i, j) = 0.5 * density(i) * velocity_range_mps(j)^2 * drag_coefficient * surface_area
+        end
+    end
+
+`for` loops
+
+- this block of example code (found in 29.2.24 - Example Code) is an example of nested `for` loops that iterate over the length of two vectors to generate every combination of values possible.
+
+- `for i = 1:length(altitude_m)` iterates for every value of `i` between 1 and the length of the vector `altitude_m`
+  - The inner `for` loop (`for j = ...`) will iterate a number of times equal to the length of the variable `velocity_range_mps`.
+  - Once the inner `for` loop finishes iterating over every possible value in that range, the outer `for` loop (`for i = ...`) will add 1 to the value of the `i` and begin the process again
+  - The entire process looks like adding 1 to the variable `j` until it hits the maximum length of the vector `velocity_range_mps` at which point `j` is reassigned to a value of 1 and `i` is assigned the value of `i+1`.
+
+- Nested `for` loops are also very useful for multi-dimensional graphs
+  
+  - Nested `for` loops can be used to create plots of multiple variables versus one another with every single combination being possible, ie:
+
+            for i = 1:length(var0)
+                for j = 1:length(var1)
+                    for k = 1:length(var2)
+                        function(t)
+                    end
+                end
+            end
+
+    This example takes 3 different parameters and compares all possible values. In this example, `k` is iterated across all values within the length of `var2`, then this process is repeated across all values in `j`, which is then iterated across all values of `i`.
+
+### How to read code
+
+- Look for variables that you recognize in functions that you recognize
+
+- Look for nested control structures that reference variables.
+
+## 29.2.24 - while loops and for loops
+
+### `while` loops
+
+- `while` loops iterate over a certain duration
+
+        while x > 3
+            do [something]
+    Where `x` is some variable that determines a duration
+- Useful for running for extended durations with constant data input
+
+    Think of when to turn on a thermostat - You want the heat to stay on when it's below your set temp but turn off when its above the set temp. The while loop could take data from a temperature sensor inside your house and control the heat that way
+
+### `for` loops
+
+- `for` loops iterate over a certain duration
+
+        for i = 1:10
+            do [something]
+
+    Where `i` is an indexing variable and 1:10 is your range
+- Automatically iterates on `i` (automatically does the equivalent of i++ in other languages)
+- `for` loops are useful for iterating over an index
+
+    Very useful if you only want something to be iterated a couple of times or don't have a constantly updating data input
+
+- Typically, `for` loops are used when you have a fixed set that you want to iterate over -- a number of rows or columns of data that you want to perform an operation on
+
+### `for` loops vs `while` loops
+
+As stated before, `for` loops are very useful for iterating over an interval `i` while `while` loops are useful for running code over an extended duration. In data handling in particular, `for` is useful for iterating across all rows/columns of a dataset (see example) and performing operations across that entire dataset. `while` loops are more effective in situations where I am performing an operation during a specific time frame. As stated prior, `while` loops are useful in situations like programming a thermostat, where you would want the heat to be on when the temperature falls below the acceptable range, and the AC to come on when the temperature rises above the acceptable range.
+
+If we wanted to extend the thermostat example, some pseudocode could look like this:
+
+    while(temp_sensor.Status == TRUE)
+        temp = temp_sensor.input()
+        tempSet = input('What Temperature would you like it to be? ')
+        if(temp_sensor.Status == FALSE)
+            break
+        end
+        if(temp<tempSet-5)
+            ac off
+            heat on
+        elseif(temp>tempSet+5)
+            ac on
+            heat off
+        end
+
+The use of `while` here allows us to continuously monitor the temperature. While this operation could be performed with an `if` conditional, the `if` conditional would only run the program once and would never try again. Using a `while` loop instead of an `if` conditional means that for as long as the temperature sensor is on the loop will continue to run.
+
+Note: I know I'm mixing coding languages but I really don't care Python and MATLAB are starting to blend together please send help I'm slowly losing my sanity
+
+#### But that's an `if` conditional not a `for` loop, so why does it matter?
+
+In this case, we used a while conditional because we do not know how long the temperature sensor would be on ie how many times the loop would need to run. If instead we knew the sample rate of the temperature sensor and only wanted it to run a certain number of times, we could instead use a `for` loop ie. Lets say we had a sample rate of 60 cycles per second and wanted our sensor to be on for 8 hours, we could use a `for` loop ie:
+
+    sampleRate = 60 % 60Hz sample rate, 60 cycles per second
+    duration = 28800 % 8h is 28800s
+    % Number of samples, i, = 60*28800
+
+    for i<sampleRate*duration
+    temp = temp_sensor.input()
+        if(temp<tempSet-5)
+            ac off
+            heat on
+        elseif(temp>tempset+5)
+            ac on
+            heat off
+        end
+for this example, since we know how long we want our temperature sensor on for, we can iterate the loop that many times. But if we wanted to keep the temperature sensor on for the entire time or run it based off of a switch, we would use a `while` loop. This `for` loop could also be combined with some kind of timing software ie the temperature sensor turns on at certain times of day.
+
+In the data handling example, we typically know the dimensions of the array that contains our dataset so we can set the number of iterations in a `for` loop much more easily. If, however, you're like me and are lazy or genuinely just don't know the size of your dataset, you can use a `while` loop. This isn't a great habit to get into as `while` loops can become a little bit of a headache to read. A `while` loop for data handling could look something like reading a data value and ending the loop when the read value is a `null` value, ie NaN, null, n/a, ???, etc.
+
+### Pseudocolor charts
+
+- Pseudocolor charts are very helpful for ploting relations of multiple variables on one point of study
+- Can be easier to read than 3 dimensional plots
+- Can be used for plots with more than 3 dimensions
+- Pseudocolor charts are typically useful in fields of study with very small increments - think of fluid dynamics/aerodynamic analysis
+
+### Drag example
+
+    alt = [0:100:4000];
+    v = [100:100:550];
+
+    % generate dimensions of the plot
+    for i = 1:100
+        for j = 1:100
+            DF(i,j) = alt(i)*v(j);
+        end
+    end
+
+### Drag Example Code -- Dr. Matthew Kropf
+
+    % Aerodynamic Drag Modeling Script with Aircraft Selection -- Formatted for readability
+    % List of common aircraft with associated data
+    
+    aircraft_list = {
+        'Boeing 737',[100,500],[0,40000],130,'ft^2','0.025;
+        'Airbus A320',[100, 550], [0, 40000], 120, 'ft^2', 0.027;
+        'Cessna 172', [60, 150], [0, 14000], 17, 'ft^2', 0.036;
+        'Gulfstream G650', [150, 600], [0, 51000], 115, 'ft^2', 0.021;
+        'Create New', [],[],[],[],[];
+    };
+    
+    % Display the list of aircraft to the user
+    
+    disp('Select an aircraft');
+    for i = 1:size(aircraft_list,1)
+        disp([num2str(i),'.',aircraft_list{i,1}]);
+    end
+    
+    % Prompt the user to select an aircraft
+    
+    selected_index = input('Enter the number corresponding to the desired aircraft: ');
+    
+    % If the user selects 'Create New'
+
+    if selected_index == size(aircraft_list,1)
+        % Prompt the user to enter details for the new aircraft
+        aircraft_name = input('Enter aircraft name','s');
+        velocity_range = input('Enter velocity range[min max] (in mph): ');
+        altitude_range = input('Enter altitude range [min max] (in ft): ');
+        surface_area = input('Enter surface area');
+        drag_coefficient = input('Enter drag coefficient: ');
+        
+        % Add the new aircraft to the list
+        aircraft_list{end, 1} = aircraft_name;
+        aircraft_list{end, 2} = velocity_range;
+        aircraft_list{end, 3} = altitude_range;
+        aircraft_list{end, 4} = surface_area;
+        aircraft_list{end, 5} = 'ft^2' % Hardcoded unit
+        aircraft_list{end, 6} = drag_coefficient;
+    end
+
+    % Extract data for selected aircraft
+    selected_aircraft = aircraft_list(selected_index,:);
+    velocity_range_mph = selected_aircraft{1,2};
+    altitude_range_ft = selected_aircraft{1,3};
+    surface_area = selected_aircraft{1,4};
+    surface_unit = selected_aircraft{1,5};
+    drag_coefficient = selected_aircraft{1,6};
+
+    % Convert altitude range from ft to m
+    altitude_range_m = altitude_range_ft*0.3048
+
+    % Generate velocity vector within the selected aircraft's range
+    velocity_range_mph = linspace(velocity_range_mph(1), velocity_range_mph(2))
+    velocity_range_mps = velocity_range_mph*0.44704
+
+    % Generate altitude vector within the selected aircraft's range
+    altitude_ft = linspace(altitude_range_ft(1), altitude_range_ft(2), 100);
+    altitude_m = altitude_ft*0.3048;
+
+    % Define constants
+    density_sea_level = 1.225; % kg/m^3
+    temperature_sea_level = 288.15; % Kelvin
+    pressure_sea_level = 101325; % Pa
+
+    % Calculate air density and pressure at each altitude
+    density = density_sea_level*exp(-(altitude_m*0.0289644*9.80665)/8.31447*temperature_sea_level);
+    pressure = pressure_sea_level*(1-(0.0065*altitude_m)/temperature_sea_level).^(9.80665*0.0289644.(8.31447*0.0065));
+
+    % Initialize matrix to store drag forces
+    drag_force_N = zeros(length(altitude_m),length(velocity_range_mps));
+
+    % Calculate drag force at each combination of altitude and velocity
+    for i = 1:length(altitude_m)
+        for j = 1:length(velocity_range_mps)
+            drag_force_N(i,j) = 0.5*density(i)*velocity_range_mps(j)^2*drag_coefficient*surface_area
+        end
+    end
+
+    % Create Pseudocolor plot
+    figure;
+    pcolor(velocity_range_mph, altitude_ft, drag_force_N);
+    shading interp;
+    colorbar;
+    xlabel('Velocity in MPH');
+    ylabel('Altitude in ft');
+    title('Drag Force in Newtons');
+
+In this code example, `for` loops are used because we know the size of our arrays eg:
+
+    for i = 1:size(aircraft_list,1)
+        disp([num2str(i),'.',aircraft_list{i,1}]);
+    end
+
+since we know the size of the array containing our aircraft we can just iterate that many times. A `while` loop could also be used but it would be a little bit more annoying to read. It is generally a good practice to use `for` loops when you know the dimensions of your operand ie we have 5 values so iterate 5 times.
