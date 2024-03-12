@@ -1,3 +1,5 @@
+% This version does not work -- It is a scrapped first version of the original assignment
+
 % Newton's Law of Cooling Animation
 % Avery Law ENGR 0016 
 % Instructor: Dr. Matthew Kropf
