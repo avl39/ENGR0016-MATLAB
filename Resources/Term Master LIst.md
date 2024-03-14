@@ -61,7 +61,7 @@ Here are some good habits to develop when programming. By no means is this an ex
 
   - Related: don't burn yourself out. This work can be really fun and really rewarding when it works but you really have to go through the trenches to get there. Don't get overinvested into a project and overwork yourself into oblivion trying to solve a small problem in the grand scheme of things.
 
-- Naming Practices
+- Naming Conventions
 
   - Capitalization conventions
 
@@ -107,13 +107,31 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
   `linspace` is used to create a vector of evenly spaced points. It can be useful in conjunction with the `plot` function to plot a function over a range of values.
 
+  `linspace` differs from the vector creation operation `:` in that the `:` operation creates a list of points with the spacing of the second argument ie
+
+        a = 1:1:10;
+
+  will create points that range from the values 1 to 10 in increments of 1. The operation performed to create the vector `a` would look something like `a(1) = 1`, `a(2) = a(1) + 1`, `a(3) = a(2) + 1`, etc.
+  
+  The `linspace` function, however, will create a number of values that are spaced evenly. If we take the same line of code,
+
+        a = linspace(1,10,10);
+
+  The operation will look something like `a(1) = 1`, `a(2) = a(1) + ((10-1)/10-1)`, `a(3) = a(2) +((10-1)/10-1)`, etc. `linspace` holds the advantage over the colon in that it will ***always*** include the arguments `x1` and `x2` whereas the colon will not always include `x1` and `x2`. It should be noted though, that if you want, lets say, 100 points between 1 and 10, you need to specify *n* as 101 instead of 100 because 1 and 100 are considered points in that set. Always account for that and set your *n* value to 1 more than how many points you want between your upper and lower bounds.
+
 - plot
 
-  `plot` plots one variable versus another. The first argument of the `plot` function is the variable you want on the X-axis and the second argument of the function is the variable you want on the Y-axis. The third argument of the `plot` function can be either another variable to plot on the X-axis, typically the same as the first argument.
+  `plot` plots one variable versus another. The first argument of the `plot` function is the variable you want on the X-axis and the second argument of the function is the variable you want on the Y-axis. The third and subsequent argument(s) of the `plot` function can be either another variable to plot on the X-axis, typically the same as the first argument.
 
   The third argument could also be a `linespec` argument which determines how the relationship between the x and y variables is displayed. `linespec` arguments include line color, point denotion(dots, boxes, circles, etc), or line style(dotted, dashed, dots and dashes, etc).
 
   The `plot` function can take theoretically an infinite number of arguments, plotting an infinite number of relationships all with different `linespec` arguments. MATALB will automatically interpret the third argument of the `plot` function and use that to determine if you are trying to plot another relation or adding a `linespec` argument.
+
+- plot3
+
+  The `plot3` function is used to plot the relationship between three different variables. It creates a three-dimensional graph with x, y, and z axes. You can set the dimensions, titles, and scale of these axes easily with their respective functions. The arguments of the `plot3` function are similar to the `plot` function in that the first argument is your x variable and the second argument is the y variable, but differs in that the third argument is not a `linespec` argument but your third variable. The `linespec` argument becomes the fourth (and potentially final) argument in the `plot3` function. It functions much the same as it does in the `plot` function.
+
+  The same plotting tricks that can be done with the `plot` function can also be done with the `plot3` function. You can plot multiple lines, all with different data patterns, line widths, colors, etc. You can also animate them to convey time. One common usage for `plot3` graphs are to show a particle's motion in three-dimensional space, with the x, y, and z coordinates representing the particles coordinate at any time *t*, represented by the animation.
 
 - figure
 
@@ -123,9 +141,13 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
   `hold` is used in conjunction with the `plot` or `figure` functions. It allows following plots to be placed onto the same figure.
 
+- legend
+
+  The `legend` function adds a legend to your plot. Pretty straighforward. It provides another way to label your data for ease of accessibility. Generally, having a plot is a pretty good practice, especially if you have multiple datasets plotted on the same figure.
+
 - pcolor
 
-  The `pcolor` function is used to create a pseuodcolor plot. Typically, pseudocolor plots are used to convey the relationship between three or more sets of data. Some of their applications include topographical maps (displaying x and y coordinates as well as altitude) or temperature cooling graphs(displaying, x and y coordinates as well as temperature). All of these could also be animated to give it another dimension of data, that being time.
+  The `pcolor` function is used to create a pseuodcolor plot. Typically, pseudocolor plots are used to convey the relationship between three or more sets of data. Some of their applications include topographical maps (displaying x and y coordinates as well as altitude) or temperature cooling graphs(displaying, x and y coordinates as well as temperature). Similar to the `plot` and `plot3` functions, `pcolor` plots can also be animated to show changes over time, and can be easier to read than `plot3` plots.
 
 - colorbar
 
