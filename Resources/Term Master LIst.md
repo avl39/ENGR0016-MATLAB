@@ -488,4 +488,6 @@ If you remember earlier, the `function` function can be called in the command li
 
 15.3.24 - I'm so tired. I dont know why I added the "How to use MATLAB" section but I've committed to it and I cant take it back :/. Currently getting through variable/array creation and we'll see how much more progress I make tonight. Hopefully it's pretty decent and coherent. Not sure how much use it'll get but we'll see. Hopefully someone does actually find it helpful and uses it to get caught back up with class otherwise I'm just wasting my time lol.
 
-15.3.25 Addenum - I gave up after beginning to write how to build scripts. I'm tired I'm going to sleep. I'll start working again when I feel like it.
+15.3.24 Addenum - I gave up after beginning to write how to build scripts. I'm tired I'm going to sleep. I'll start working again when I feel like it.
+
+16.3.24 - Not sure what else to add to the Intro to MATLAB section. I think for the most part I've covered everything but I'll keep adding to it as the semester continues.
