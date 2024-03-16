@@ -49,11 +49,13 @@ Here are some good habits to develop when programming. By no means is this an ex
 
   - The MATLAB forums have solutions for basically everything. If you're confused about how to use a function, consult the documentation. If you don't know where to start on a problem, consult the forums. I can almost guarantee you that someone has had a similar problem to you before and has asked about it. They might not have the exact solution you're looking for but they offer a very helpful starting point.
 
-  - Even outside of MATLAB, StackOverflow and github are both excellent resources. StackOverflow houses answers to so many questions and github houses a lot of programs and example code for you to use.
+  - Even outside of MATLAB, StackOverflow and github are both excellent resources. StackOverflow has the answers to almost any and every question you could possibly have and github houses a lot of programs and example code for you to use.
 
 - Don't be afraid to use external resources
 
   - Programmers are like artists -- Good artists create but great artists steal. But don't steal. Always cite your sources for your code in your heading -- something along the lines of "parts borrowed from [USER]".
+
+  - When you cite other users' work, either cite them in the heading of your script/program or where their code was used inside your script. In my Newton's Law of Cooling simulation, I used another user's code and I them when I used their code. Generally with citations, indicate where their code starts and ends with either a comment or extra whitespace. Make sure you also note when you modify their code and adjust your citation based off of that ie "Code borrowed from [USER] with modifications performed to [FUNCTION]"
 
 - Don't be afraid to take breaks
 
@@ -67,25 +69,33 @@ Here are some good habits to develop when programming. By no means is this an ex
 
     - snake_case vs camelCase vs PascalCase
 
-      - In snake_case, spaces in names are replaced with the underscore(_) character
+      - In snake_case, spaces in names are replaced with the underscore(_) character. Typically, the first letter of every word is left in lowercase.
 
-      - In camelCase, the first letter of the first word in a name is left lowercase and every subsequent first letter is left in uppercase
+        With camelCase, the first letter of the first word in the name is left lowercase and every subseqent first letter is left in uppercase.
 
-      - In PascalCase, the first letter of every word is left uppercase
+        In PascalCase, the first letter of every word is left in uppercase.
 
-      - There is not one "right" capitalization convention(***do not use PascalCase***), but be consistent with your naming. I have a preference for camelCase because I think it's the fastest system to type and also looks the best but try them all out and find what works best for you (***DO NOT USE PASCALCASE I WILL FIND YOU***)
+        If we wanted to name a new function "Newtons Law of Cooling", here's how it would look in every naming convention
+
+        snake_case: `newtons_law_of_cooling`
+
+        camelCase: `newtonsLawOfCooling`
+
+        PascalCase: `NewtonsLawOfCooling`
+
+      - There is not one "right" capitalization convention (anything but PascalCase), but be consistent with your naming. I have a preference for camelCase because I think it's the fastest system to type, looks the best, and is the easiest to follow, but try them all out and find out which convention is your prefered convention (***DO NOT USE PASCALCASE I WILL FIND YOU***)
 
   - Variable Names
 
     - Make your variable names intuitive. If something is a user input, name it `userInput` or something along those lines. Make your life easier by making your variables clear and make everyone who's reading your code lives easeir by making so they can intuit what each variable is used for.
 
-  - Constant, functions, and miscellaneous others
+  - Constants, functions, and miscellaneous others
 
     - In the grander world of Computer Science/Computer Programming, constants are typically written in all uppercase. You don't have to follow this, but make sure your naming conventions are consistent.
 
-    - Function names are typically written in all lowercase. Again, you aren't required to follow this but it is good practice to be consistent. Especially if you work with a bunch of computer science people be consistent.
+    - Function names are typically written in all lowercase. Again, you aren't required to follow this but it is good practice to be consistent. If you work with data scientist/computer science people, try to adhere to the convention. Otherwise, just be consistent.
 
-    - In general, make sure the names of things are always intuitive. If, for example, there was a gravitational constant, I could use `g` for it because `g` is a widely used notation for gravity. If I have a function to calculate the drag experienced by a body, I could name that function `drago`, `dragforce`, or `dragForce`, not `function32415`. It seems like a small thing but it adds up in the long run. The less we have to interpret the better your code feels to read and build off of.
+    - In general, make sure the names of things are always intuitive. If, for example, my code dealt with gravity/gravitation, I could use `g` for either gravity or the gravitational constant because `g` is a widely used notation for gravity and the gravitational constant. If I have a function to calculate the drag experienced by a body, I would name that function `drag`, `dragforce`, or `dragForceExperienced`, not `myfunction1`. By all measures, it's a pretty small detail but the more intuitive your code is to read the better your experience working with it and others will have reading through your code/sampling it.
 
 ### MATLAB-specific functions
 
@@ -131,11 +141,11 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
   The `plot3` function is used to plot the relationship between three different variables. It creates a three-dimensional graph with x, y, and z axes. You can set the dimensions, titles, and scale of these axes easily with their respective functions. The arguments of the `plot3` function are similar to the `plot` function in that the first argument is your x variable and the second argument is the y variable, but differs in that the third argument is not a `linespec` argument but your third variable. The `linespec` argument becomes the fourth (and potentially final) argument in the `plot3` function. It functions much the same as it does in the `plot` function.
 
-  The same plotting tricks that can be done with the `plot` function can also be done with the `plot3` function. You can plot multiple lines, all with different data patterns, line widths, colors, etc. You can also animate them to convey time. One common usage for `plot3` graphs are to show a particle's motion in three-dimensional space, with the x, y, and z coordinates representing the particles coordinate at any time *t*, represented by the animation.
+  The same plotting tricks that can be done with the `plot` function can also be done with the `plot3` function. You can plot multiple lines, all with different data patterns, line widths, colors, etc. You can also animate them to convey time. One common usage for `plot3` graphs are to show a particle's motion in three-dimensional space, with the x, y, and z coordinates representing the particles location at any given time *t*, represented by the animation.
 
 - figure
 
-  the `figure` function creates a new figure element. Following uses of the `plot` function will write onto this new `figure` element instead of overwriting the previous plot on the previous figure element.
+  the `figure` function creates a new figure element. Following uses of the `plot` function will write onto this new `figure` element instead of overwriting the previous plot on the previous figure element. Useful for when you want to have multiple plots but don't want to plots to overlap.
 
 - hold
 
@@ -163,6 +173,8 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
   The `shading` and `colormap` functions both deal with how the `pcolor` plot is displayed. The `shading` function deals with how the colors are seperated/combined and the `colormap` function determines what color scale the `pcolor` plot is displayed with.
 
+  Think of the `shading` function as how the colors transition into one another ie how smooth/gradual the gradient is and think of the `colormap` function as your color range.
+
 - xlabel/ylabel/title
 
   Take a wild guess what `xlabel`, `ylabel`, and `title` do. They title either your figure or your axis. It should be noted that you can set a target object for all of these functions. In the case of a pseudocolor plot, you can title the colorbar with code that looks something like this:
@@ -170,7 +182,7 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
         cb = colorbar;
         ylabel(cb, 'Color Bar Title'); 
   
-  In this case, we set the `colorbar` object as our target and use the `ylabel` function to make the label for the function vertical instead of horizontal as it would be if we had used the `xlabel` function.
+  In this case, we set the `colorbar` object, `cb` as our target and use the `ylabel` function to make the label for the function vertical instead of horizontal as it would be if we had used the `xlabel` function.
 
 - input
 
@@ -178,7 +190,7 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
         userIn = input("Prompt", "s")
 
-  Without the `"s"` argument, MATLAB will try to store the user input as a double and that can lead to problems with reading the user's input.
+  Without the `"s"` argument, MATLAB will try to store the user input as a double and that can lead to problems with reading the user's input, especially if that user's input is not a set of numbers. Do remember though that if you use the `"s"` argument, you cannot perform operations on the user's input.
 
 - num2str/str2num
 
@@ -186,7 +198,7 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
   the `str2num` function does the inverse of the `num2str` function and takes a string and converts it into its numerical counterpart. It does this by converting each character into some combination of scalar values that converts into the character counterpart.
 
-- str2double
+  - str2double
   the `str2double` function, much like the `str2num` function converts a string into a numeric string but converts it into a double instead of a scalar value. This function is basically `str2num` on steroids. We don't really need to worry about it for our use case.
 
 - function
@@ -354,8 +366,126 @@ MATLAB has some terms that are specific to it. There aren't going to be very man
 
   Cell arrays are helpful to store multiple datatypes ie handling strings and arrays in the same array but that's about the extent of their usage. For handling a singular datatype, use an array as using a cell array to handle that data just adds another level of uneeded complexity. MATLAB's documentation itself recommends that you only use cell arrays to store multiple datatypes in the same array and to use a normal array for all other usecases.
 
-### Editor's Notes - These are going to be pretty unhinged, be prepared
+### How to use MATLAB - A very quick overview on how MATLAB works
+
+When you open MATLAB, you'll be greeted with most likely the command window, your workspace, and your working directory. Your command window is where the majority of your work will be done at this point. Your workspace houses all of your variables and functions and can be configured to show the size and a preview of each variable. Currently, your workspace should be empty because you have not initialized a variable or a function so let's do that now.
+
+#### Initializing Variables
+
+In MATLAB, you initialize a variable by typing your variable name and using a single equals sign followed by the value you want to assign to the variable. For instance, let's say that I want to have a variable called `rasberry` with the value of 10. The code to initialize the variable `rasberry` would look like:
+
+    rasberry = 10;
+
+In this example, we used the semicolon to supress the output, otherwise the command window would display the following lines:
+
+    rasberry
+
+        = 10
+
+(Or something along those lines)
+
+After the variable `rasberry` is initialized, you can see it in your workspace. Your workspace sorts all of the objects within it by descending alphabetical order. But because it is the only variable that's been initialized, `rasberry` will be found at the top of your workspace.
+
+Let's say we want to initialize another variable, but this time with a vector of values. Let's call this variable `blueberry` and give it the values of 5, 10, 15, and 20. The code to initialize the variable `blueberry` would look like:
+
+    blueberry = [5,10,15,20];
+
+or
+
+    blueberry = [5 10 15 20];
+
+It should be noted that both the comma and the space are recognized delimiters. With these lines of code, we have succesfully initialized our variable `blueberry`. These lines of code have initialized `blueberry` as a *row vector*. If you were to open the variable `blueberry` from your workspace, you would see it as a row of data with the values of 5, 10, 15, and 20. To create a *column vector*, we use the semicolon to deliniate new lines of data. Let's make another variable with the same values as `blueberry` but as a column vector instead of a row vector. Let's call this variable `strawberry`. The code to initialize `strawberry` would look like:
+
+    strawberry = [5;10;15;20];
+
+This all fine to create vectors, but oftentimes we have multiple datapoints that have to be stored in a very specific sequence, at which point a matrix would be very helpful. Matricies are also helpful for plotting relationships, ie temperature graphs. Let's say we want to initialize a matrix called `blackberry` with the values of 5 and 10 in the first row and 15 and 20 in the second. The code to intialize `blackberry` would look like:
+
+    blackberry = [5,10;15,20];
+
+If you were to type `blackberry` into the command line or open it through the workspace, you would be greeted by something that looks like this:
+
+    blackberry =
+
+    5   10
+
+    15  20
+
+#### Initializing local functions
+
+Functions are very useful for performing repetitive tasks. Let's say we wanted to model a mathematical function `f(x) = 4x-6`. To create that function inside MATLAB, we would use the `function` function inside the command window. The syntax to initialize a function inside the command window looks like:
+
+  function [FUNCTIONNAME] = @[SYMBOLIC] [FUNCTION]
+
+In the case of our previous function, `f(x)`, initializing our function inside the command line looks something like:
+
+  function f = @x 4*x-6;
+
+The argument of the function `f` will be put into parenthesis following the function name ie `f(argument)`.
+
+#### Working with variables
+
+Variables are useful to store data but would be pretty useless if that was all they did. Luckily, we can use variables as the arguments for functions to create new variables to store those values. Using the variables and functions that we initialized prior, we can modify our variables.
+
+Let's say we wanted to apply our function `f` to the variable `strawberry`. In order to do that, we could do something like:
+
+    mango = f(strawberry)
+  
+and our output would look something like:
+
+    mango = 
+
+      14    34    54    74
+
+The same applies if we were to use any of our other variables. If we used `blueberry` instead of `strawberry`, to create a new variable, `banana`, it would look something like this:
+
+    banana = f(blueberry)
+
+    banana = 
+
+      14
+
+      34
+
+      54
+
+      72
+
+And if we were to use the matrix `blackberry` to create a new variable, `apple`, it would look something like this:
+
+    apple = f(blackberry)
+
+    apple = 
+
+    14    34
+
+    54    72
+
+As you can see, the output of function will have the same datatype as the input of the function. If your input is a scalar, the output will be a scalar. If the input is a vector, your output will be a vector. And if your input is a matrix, your output will be a matrix.
+
+#### Working with Arrays
+
+Arrays are special in that there are two different types of operations that can be done with them. You can do element-wise operations, also known as the dot product, or vector operations, also known as the cross-product. The element-wise operations are indicated by the period coming before the operation, ie `.*`, `.^`, and `./`. The cross-product is performed if there is no period present before the operator.
+
+When you perform any operation between a scalar and an array, the operation is always elementwise. It applies that operation to every single value in the array and returns the result of the operation.
+
+#### Building Scripts
+
+Scripts allow you to write and excecute several lines of code all at once and are what make MATLAB useful. Writing scripts is where you're going to be spending most of your time in this program as you can combine functions to create programs.
+
+Scripts are saved as *.m* files and will be saved in your working directory. I would recommend having folders for seperate projects. Do be aware, however, that MATLAB does not parse subfolders, only the folder you select as your working directory.
+
+To create a script, you can go into the toolbar and click New Script, or use the keyboard shortcut, Ctrl + N. This will open up a new workspace that looks just like a text editor. This is where you can define what you want your script to do. Scripts can range from being simple calculations to being incredibly complex simulations. Unlike the command line, every line in a script, with the exception of control structures, must be terminated with a semicolon character.
+
+#### Global Functions
+
+If you remember earlier, the `function` function can be called in the command line to initialize a *local function*. Local functions disappear after you clear your command line using `clear`, while global functions will remain usable as long as your working directory remains the same. The process to create a global function is the same as that to create a script. You must create a new *.m* file, define your function, and then save the file. Try to make sure that your function's filename is the same as the function's name for clarity.
+
+### Editor's Notes - These are going to be pretty unhinged
 
 2.3.24 - I've been working on this for about 6 hours now and I'm slowly losing my sanity. Trying to type all of this from memory is a lot and I'm confusing a lot of syntax with Python. I also just prefer Python of MATLAB, I feel like for engineering there's a lot of overlap in the two program's capabilities. MATLAB definitely has a shallower learning curve but I feel like Python is more intuitive from a data handling perspective. the `numpy` and `pandas` libraries have basically everything you need for data science and working with filetypes in Python feels really really intuitive but maybe I'm just biased. I would recommend anyone who's reading this and feels up for the challenge to do some reading/learning on data handling with Python -- I used LinkedIn's Intro to Python course to learn the basics and then just used the `pandas` practice problems to get more familiar with the libraries. Those practice problems can be found [here](https://www.w3resource.com/python-exercises/pandas/index-data-series.php). If you do want to get started with Python, I'd recommend VSCode or Jupyter Notebooks as your IDE. You can build Jupyter Notebooks through VSCode(what I do) and then personalization from VSCode will carry into Jupyter, but I would only recommend VSCode if you are going to learn how to program in other languages. Jupyter Notebooks and VSCode have very similar capabilities but I prefer VSCode for its extension marketplace and overall visual approach. VSCode feels a little more streamlined than Jupyter Notebooks does to me and I enjoy the workflow more in VSCode than it Jupyter, though I haven't used Jupyter nearly as much as I have used VSCode.
 
 8.3.24 - Aiming to get this out today. Everything is still pretty rough and there's a lot I still need to get done but I think this a good starting point. I'll probably finish this over break and upload an updated version with some edits and get mostly everything with the [TODO] marker done. Most of this has been done from memory with the exception of a couple of function definitions so it's a very real possibility that I missed something or messed something up. If you want to amend something you can shoot me an email or just leave a comment under the Canvas post and I'll do my best to amend it. I think for the most part I've hit everything that we've covered up to this point in the semester but it is a very real possibility that I missed something here. I did not comment on our use of ChatGPT because I feel like that is outside the scope of this document but if you would like to see that let me know.
+
+15.3.24 - I'm so tired. I dont know why I added the "How to use MATLAB" section but I've committed to it and I cant take it back :/. Currently getting through variable/array creation and we'll see how much more progress I make tonight. Hopefully it's pretty decent and coherent. Not sure how much use it'll get but we'll see. Hopefully someone does actually find it helpful and uses it to get caught back up with class otherwise I'm just wasting my time lol.
+
+15.3.25 Addenum - I gave up after beginning to write how to build scripts. I'm tired I'm going to sleep. I'll start working again when I feel like it.
