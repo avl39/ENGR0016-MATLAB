@@ -344,6 +344,16 @@ Here you can find some common programming terms that are used regularly in vario
 
   A `double` is a precision datatype that can store a pretty large sized piece of data. For our usage, you can think of a `double` as a very precise number, more precise than the `float` datatype and is helpful for very precise calculations. `double` objects can carry double the place values that a `float` value can carry and thus is more precise. In MATLAB, the default number datatype is a `double`.
 
+- boolean
+
+  A `boolean` is a datatype that has 2 possible forms: TRUE and FALSE. A boolean is typically the result of a comparison or a two-position sensor like a button. `boolean`s are also sometimes represented by their binary counterparts, 1 or High for TRUE, and 0 or Low for FALSE.
+  
+  `booleans` are also typically the argument of control structures like `if` and `while` statements. In `if` and `else if` conditions, the arguments are typically logical comparisons between a specified value and a variable.
+
+- Logical Comparisons/Boolean Operators
+
+  Logical Comparisons or Boolean Operators are what they sound like -- a comparision of two variables. There are various different types of logical comparisons, also commonly called *gates*. These gates are the `not` gate, the `and` gate, the `nand` gate, the `or` gate, the `nor` gate, the `xor` gate, and the `xnor` gate. Each gate has a different purpose and can be combined to reach a desired set of outputs for every possible combination of inputs, also known as a *truth table*. What each gate does and its purpose is outside the scope of this documentation but researching logic gates and truth tables is not a bad thing to learn.
+
 - argument
 
   An `argument` is simply the "input" of a function that it evaluates. Typically, `argument` objects are located inside parenthesis following function names and seperated by commas, although some languages will let you seperate arguments with whitespace(space).
