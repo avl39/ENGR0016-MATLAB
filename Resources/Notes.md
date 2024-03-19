@@ -1,5 +1,99 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 19.3.24 - Data sampling and MATLAB
+
+### What is Data?
+
+- Data is numbers that we want to interpret and measure.
+
+- Data has to be gathered (measured) by some kind of measurement tool that converts analog to digital data
+
+  - The tool that is used to convert data is called an ADC, or Analog to Digital Converter
+
+  - The ADC is what controls the bitrate, bit depth, etc.
+
+- Every number measured gets converted to a binary bin. Every number has a distinct binary bin
+
+- 4 is the minimum bit depth to express every digit in the base 10 counting system
+
+  - Bit depth is the number of digits that a value can store
+
+  - Determined by the function `d = p^n` where `d` is possible number of outputs, `p` is the number of possible positions (2 because binary has 2 possible values), and `n` is the necessary bit depth
+
+    - To represent all numbers in the base 10 system, the minimum bit depth is 4 bits.
+
+        > 10 = 2^n; n = 3.3219 ~ 4
+
+  - The higher bit depth, the better quality the data -- Less rounding errors
+
+    - Think of the resolution of a photograph -- The higher resolution the photo the more information you can get from the photo
+
+### How do we interpret data?
+
+1. Magnitude
+
+    When the magnitude of data correleates directly to the phenomena that you are trying to measure
+
+    Time does not play much of a role
+
+2. Frequency Count Measurement
+
+    When the magnitude of data and time correlate directly to the phenomena that you are trying to measure
+
+### NDT - Non Destructive Testing
+
+Non-Destructive Testing
+
+- Visual Inspection
+
+  Looking at the thing to see if there are any visual defects with it
+
+- Dye Penetrant
+
+  A dye is sprayed onto the structure, wiped off, then sprayed with an activator. The activator will leave some kind of residue on where the dye was not wiped off of
+
+- Acoustic Inspection
+
+  Ultrasound is projected into a structure. Disruptions to the recieved wave can be mapped and used to observe
+
+### ... Ultrasound?
+
+- Ultrasound pulses can be sent into a structure to measure internal fatigue/failure
+
+  Ultrasound waves are reflected off of flaws inside the material as well as the back wall
+
+  Generally the speed of sound within a material is known and that can be used to measure the location of an internal flaw
+
+- The first peak is known as the "Main Bang"
+
+### MATLAB
+
+To import data into MATLAB, use the `importdata` function
+
+- The `importdata` function imports data from a .CSV file located in your working directory
+
+- Creates a `struct` object with 3 fields: a data field, a textdata field, and a colheaders field
+
+- To reference data inside the `struct` object, the syntax is `structName.field(row,col)`
+
+  If I had a structure object named `data` and I wanted to refer to the data point in Row 5 at Column 3, the syntax would look like:
+
+        data = importdata("DATA1.csv");
+
+        data.data(5,3)
+
+- You can also initialize a new variable to house just your data values ie:
+
+        importdata("DATA1.csv");
+
+        data = ans.data;
+  
+  Then this data can be plotted ie
+
+        importdata("DATA1.csv:);
+        data = ans.data;
+        plot(data(:,1),data(:,2))
+
 ## 7.3.24 - Control Structures - While loops
 
 ### Do Now
