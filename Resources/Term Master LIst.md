@@ -254,7 +254,24 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
     The `XOR` operator takes two arguments on either side and compares them. It will output a boolean value of `TRUE` if and only if the two arguments have different values ie if the argument on the left is `TRUE` and the right is `FALSE` or vice versa. However, if both of the arguments have the same boolean value, ie both are `TRUE` or both are `FALSE`, the `XOR` operator will output a value of `FALSE`.
 
-### General programming functions [TO DO]
+- importdata
+
+  The `importdata` function does what you think it does. It imports data from your working directory into your workspace as a `structure` object. `structure` objects are similar to cell arrays in that they are datatypes that can store other datatypes. However, unlike cell arrays, structure objects have three different fields, a `data` field, a `textdata` field, and a `colheaders` field. MATLAB tries to interpret the data imported and sorts them into these fields.
+
+  The `data` and `textdata` fields house what MATLAB interprets as data. The `data` field is dedicated to float and double values exclusively and the `textdata` field houses data in the form of characters and strings. Typically, you want to be operating on values located in the `data` field.
+
+  Structure (`struct`) objects operate similarly to cell arrays in that you have to reference the data inside the fields to get to actual values. The syntax to pull out a value inside of a `struct` object is as follows:
+
+        structure.field(row,col)
+
+  The value for `structure` must be the name of the structure, the value for `field` must be the field that you want to reference, and the values for `row` and `col` are the respective coordinates of the data you want to reference. For ease of use, assign a new variable for your structure or for the data you are operating on. For example:
+
+        importedData = importdata("DATA.csv");
+        workingData = importedData.data;
+
+  These lines of code create a variable `importedData` that houses all of the fields in the .CSV file (`data`, `textdata`, and `colheaders`) and a second variable, `workingData` that is assigned the values of the `data` field of the imported .CSV file. Although it adds an additional line of code, it is significantly faster to type a variable name, ie `workingData` than it is to type `importedData.data` every time you need to reference the data inside of your .CSV file.
+
+### General programming functions
 
 Some general programming functions that can be found in other languages, maybe with different syntax but the general function is the same in all languages. These commands of course can be found in MATLAB and are very useful once things start to become more complicated.
 
@@ -294,7 +311,7 @@ Some general programming functions that can be found in other languages, maybe w
 
   In this example, the `while` loop iterates while `i` is less than 10, sets the value of the datapoint at the position `i` in the vector `z` equal to 5 to the power of `n`. After it sets that value in `z`, it increases the value of `n` by 1, increases the value of `i` by 1, then rechecks if `i` is still less than 10. If `i` is less than 10, it runs the loop again. If not, it ends the loop and displays the text "Done" in the command window.
 
-### Common programming terms [TO DO]
+### Common programming terms
 
 Here you can find some common programming terms that are used regularly in various languages. While they might not hold the exact same in every language, for the most part their meaning is universal. The wording and purpose of each term might be a little bit different but again they typically mean the same or similar things.
 
@@ -349,6 +366,10 @@ Here you can find some common programming terms that are used regularly in vario
   A `boolean` is a datatype that has 2 possible forms: TRUE and FALSE. A boolean is typically the result of a comparison or a two-position sensor like a button. `boolean`s are also sometimes represented by their binary counterparts, 1 or High for TRUE, and 0 or Low for FALSE.
   
   `booleans` are also typically the argument of control structures like `if` and `while` statements. In `if` and `else if` conditions, the arguments are typically logical comparisons between a specified value and a variable.
+
+- Structures/Structs
+
+  `structures` or `struct` objects are a group of variables. `struct` objects are similar to `cell arrays` in that they can store differing datatypes within one object. The variables inside of a `struct` object is known as a `member` of that `struct` object. To refer to a `member`, add a period to the end of the `struct` object's name followed by the name of the `member`.
 
 - Logical Comparisons/Boolean Operators
 
@@ -508,7 +529,7 @@ Despite that, I will not use AI for the forseeable future, at least during my ti
 
 Don't get me wrong, I think AI has great potential. I do think, however, that understanding what makes the code work and understanding the concepts that go into the code that the model is generating is incredibly important because let's say your boss asks you to explain the code that ChatGPT generated for you. You should be able to explain nearly every line of code in that script/program and its function with minimal references to the documentation.
 
-### Editor's Notes - These are going to be pretty unhinged
+### Editor's Notes
 
 2.3.24 - I've been working on this for about 6 hours now and I'm slowly losing my sanity. Trying to type all of this from memory is a lot and I'm confusing a lot of syntax with Python. I also just prefer Python of MATLAB, I feel like for engineering there's a lot of overlap in the two program's capabilities. MATLAB definitely has a shallower learning curve but I feel like Python is more intuitive from a data handling perspective. the `numpy` and `pandas` libraries have basically everything you need for data science and working with filetypes in Python feels really really intuitive but maybe I'm just biased. I would recommend anyone who's reading this and feels up for the challenge to do some reading/learning on data handling with Python -- I used LinkedIn's Intro to Python course to learn the basics and then just used the `pandas` practice problems to get more familiar with the libraries. Those practice problems can be found [here](https://www.w3resource.com/python-exercises/pandas/index-data-series.php). If you do want to get started with Python, I'd recommend VSCode or Jupyter Notebooks as your IDE. You can build Jupyter Notebooks through VSCode(what I do) and then personalization from VSCode will carry into Jupyter, but I would only recommend VSCode if you are going to learn how to program in other languages. Jupyter Notebooks and VSCode have very similar capabilities but I prefer VSCode for its extension marketplace and overall visual approach. VSCode feels a little more streamlined than Jupyter Notebooks does to me and I enjoy the workflow more in VSCode than it Jupyter, though I haven't used Jupyter nearly as much as I have used VSCode.
 
