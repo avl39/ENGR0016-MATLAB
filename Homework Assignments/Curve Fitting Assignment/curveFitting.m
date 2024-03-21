@@ -14,3 +14,8 @@ for i = 1:4
     rSquaredCompare(i) = S.rsquared;
 end
 
+[M, r] = max(rSquaredCompare);
+plot(x,y,'o', x, polyval(polyfit(x,y,r),x))
+legend('Imported Values','Line of Best Fit')
+xlabel(cheaders(1))
+ylabel(cheaders(2))
