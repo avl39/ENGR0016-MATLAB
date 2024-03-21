@@ -1,5 +1,43 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 21.3.24
+
+### Do Now - polyfit
+
+Use the `polyfit` function to find the best fitting polynomial function for the file `DATA1.csv`
+
+    % Import data
+
+    importdata("DATA1.csv");
+    data = ans.data;
+    x = ans.data(:,1);
+    y = ans.data(:,2);
+    
+    % Begin plotting data
+
+    figure
+    plot(x,y,'o')                       % Plot the inital values from the .csv file
+    hold on
+    p = polyfit(x,y,2);                 % Use the polyfit function to find the line of best fit as a second-order polynomial
+    y1 = polyval(p,x);                  % Create a new vector, y1, that is the function found by polyfit for the values of the vector x
+    plot(x,y1)
+
+Extra lines and variables can be cut out by nesting functions, ie:
+
+    % Import data
+
+    importdata("DATA1.csv");
+    x = ans.data(:,1);
+    y = ans.data(:,2);
+
+    % Begin plotting data
+
+    figure
+    plot(x,y,'o');                      % Plot the initial values from the .csv file
+    hold on
+    y1 = polyval(polyfit(x,y,2),x);     % Use the polyval function to create a new vector, and specify the function as the polyfit function
+    plot(x,y1)
+
 ## 19.3.24 - Data sampling and MATLAB
 
 ### What is Data?
@@ -96,7 +134,7 @@ To import data into MATLAB, use the `importdata` function
 
 ## 7.3.24 - Control Structures - While loops
 
-### Do Now
+### Do Now - while loop
 
 Create a `while` loop that does the same things as the following `for` loop
 
