@@ -262,6 +262,14 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
   - The `polyval` function evaluates a polynomial at every specified point. Can be use in conjunction with the polyfit function to find and evaluate a line of best fit.
 
+- polyfit
+
+  - The `polyfit` function calculates a best fitting polynomial of a specified degree. Helpful when used in conjunction with the `polyval` function.
+
+- polyval
+
+  - The `polyval` function evaluates a polynomial at every specified point. Can be use in conjunction with the polyfit function to find and evaluate a line of best fit.
+
 - importdata
 
   The `importdata` function does what you think it does. It imports data from your working directory into your workspace as a `structure` object. `structure` objects are similar to cell arrays in that they are datatypes that can store other datatypes. However, unlike cell arrays, structure objects have three different fields, a `data` field, a `textdata` field, and a `colheaders` field. MATLAB tries to interpret the data imported and sorts them into these fields.
