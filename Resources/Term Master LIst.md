@@ -254,6 +254,14 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
     The `XOR` operator takes two arguments on either side and compares them. It will output a boolean value of `TRUE` if and only if the two arguments have different values ie if the argument on the left is `TRUE` and the right is `FALSE` or vice versa. However, if both of the arguments have the same boolean value, ie both are `TRUE` or both are `FALSE`, the `XOR` operator will output a value of `FALSE`.
 
+- polyfit
+
+  - The `polyfit` function calculates a best fitting polynomial of a specified degree. Helpful when used in conjunction with the `polyval` function.
+
+- polyval
+
+  - The `polyval` function evaluates a polynomial at every specified point. Can be use in conjunction with the polyfit function to find and evaluate a line of best fit.
+
 - importdata
 
   The `importdata` function does what you think it does. It imports data from your working directory into your workspace as a `structure` object. `structure` objects are similar to cell arrays in that they are datatypes that can store other datatypes. However, unlike cell arrays, structure objects have three different fields, a `data` field, a `textdata` field, and a `colheaders` field. MATLAB tries to interpret the data imported and sorts them into these fields.
@@ -403,19 +411,19 @@ When you open MATLAB, you'll be greeted with most likely the command window, you
 
 #### Initializing Variables
 
-In MATLAB, you initialize a variable by typing your variable name and using a single equals sign followed by the value you want to assign to the variable. For instance, let's say that I want to have a variable called `rasberry` with the value of 10. The code to initialize the variable `rasberry` would look like:
+In MATLAB, you initialize a variable by typing your variable name and using a single equals sign followed by the value you want to assign to the variable. For instance, let's say that I want to have a variable called `rasperry` with the value of 10. The code to initialize the variable `rasperry` would look like:
 
-    rasberry = 10;
+    rasperry = 10;
 
 In this example, we used the semicolon to supress the output, otherwise the command window would display the following lines:
 
-    rasberry
+    rasperry
 
         = 10
 
 (Or something along those lines)
 
-After the variable `rasberry` is initialized, you can see it in your workspace. Your workspace sorts all of the objects within it by descending alphabetical order. But because it is the only variable that's been initialized, `rasberry` will be found at the top of your workspace.
+After the variable `rasperry` is initialized, you can see it in your workspace. Your workspace sorts all of the objects within it by descending alphabetical order. But because it is the only variable that's been initialized, `rasperry` will be found at the top of your workspace.
 
 Let's say we want to initialize another variable, but this time with a vector of values. Let's call this variable `blueberry` and give it the values of 5, 10, 15, and 20. The code to initialize the variable `blueberry` would look like:
 
