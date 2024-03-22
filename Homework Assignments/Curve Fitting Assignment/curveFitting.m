@@ -13,8 +13,8 @@ y = data(:,2);
 % Find line of best fit for data values up to a fourth-order polynomial
 for i = 1:4
     [p, S] = polyfit(x, y, i);
-    r = 1 - (S.normr/norm(y-mean(y)))^2;
-    rSquaredCompare(i) = r;
+    r = 1 - (S.normr/norm(y-mean(y)))^2;    % Calculate rsquared values for each polynomial
+    rSquaredCompare(i) = r;                 % Store rsquared values in a vector called rSquaredCompare
 end
 
 % Find the best fitting polynomial function and plot it

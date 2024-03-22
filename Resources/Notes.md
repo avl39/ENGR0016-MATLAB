@@ -1,6 +1,6 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
-## 21.3.24
+## 21.3.24 polyfit function
 
 ### Do Now - polyfit
 
