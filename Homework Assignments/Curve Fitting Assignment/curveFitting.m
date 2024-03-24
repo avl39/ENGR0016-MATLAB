@@ -1,5 +1,9 @@
 % Curve fitting script to find best fitting polynomial for a given datafile
 
+% Clear workspace
+clear
+clc
+
 % Initialize imported file and filename
 fileName = input('Enter the filename within single apostrophes as [FILENAME.ext]');
 file = importdata(fileName);
@@ -19,6 +23,15 @@ end
 
 % Find the best fitting polynomial function and plot it
 [M, j] = max(rSquaredCompare); % Pull out the location(degree) of the polynomial with the best R^2 value
+if j == 1
+    disp(j 'st order polynomial with an R^2 value of' r(j))
+elseif j == 2
+    disp(j 'nd order polynomial with an R^2 value of' r(j))
+elseif j == 3
+    disp(j 'rd order polynomial with an R^2 value of' r(j))
+elseif j > 3
+    disp(j 'th order polynomial with an R^2 value of' r(j))
+end
 plot(x,y,'o', x, polyval(polyfit(x,y,j),x)) % Plot the imported data against the line of best fit
 legend('Imported Values', 'Polynomial line of best fit')
 xlabel(cheaders(1))
