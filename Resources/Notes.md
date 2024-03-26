@@ -1,5 +1,62 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 26.3.24
+
+### Homework Review
+
+#### Troubleshooting
+
+- Make a chart for inputs and expected outputs
+  - Makes it easier to see what is and isn't what you expected
+
+  |             | P         |`i`        |
+  |:-----------:|:---------:|:---------:|
+  |[a,b]        |2x1        |1          |
+  |[a,b,c]      |3x1        |2          |
+  |[a,b,c,d]    |4x1        |3          |
+  |[a,b,c,d,e]  |5x1        |4          |
+
+  The issue with this block is that the vector changes dimensions every time `i` iterates. To solve, create a cell array object to store all of the values
+
+  When we store each of the arrays in the cell array, each `i` value is stored as its own object inside the cell array eg:
+
+        a = [1,2];
+        b = [1,2,3];
+        c = [1,2,3,4];
+        P{a,b,c};
+
+### Yeah idk whats happening rn
+
+- `y_delta` comes from the optional argument in `polyval(x,y,s)` and estimates the standard error
+  - Can be used to calculate degree of certainty in a dataset/trendline
+
+### Editing my code
+
+Goals:
+
+- Make more arbitrary(any order of polynomials)
+  - Add field asking user for what order polynomial they want to find
+  - Replace `4` in *line 18* with the user's input
+  - Change `p` in *line 19* with `p{i}`
+  - Replace `polyfit(x,y,j)` in *line39* with `p{j}`
+- Cut out lines of code
+  - Remove the `if` conditionals (it was so pretty with them though :<)
+
+### How does the script break?
+
+- Trig functions
+- Poor/Random data
+- Multi-dimensional plots
+- Incomplete datasets
+  - Some programs will automatically parse data for `NaN` values and delete the entry
+- Sparse datasets
+
+### Why Use MATLAB
+
+- Batch fitting
+- Confidence intervals
+- Intro stats stuff?
+
 ## 21.3.24 polyfit function
 
 ### Do Now - polyfit
