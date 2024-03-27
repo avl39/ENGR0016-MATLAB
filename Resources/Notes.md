@@ -2,9 +2,7 @@
 
 ## 26.3.24
 
-### Homework Review
-
-#### Troubleshooting
+### Homework Review Troubleshooting
 
 - Make a chart for inputs and expected outputs
   - Makes it easier to see what is and isn't what you expected
