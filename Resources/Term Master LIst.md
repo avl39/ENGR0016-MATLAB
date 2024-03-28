@@ -287,6 +287,14 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
 
   These lines of code create a variable `importedData` that houses all of the fields in the .CSV file (`data`, `textdata`, and `colheaders`) and a second variable, `workingData` that is assigned the values of the `data` field of the imported .CSV file. Although it adds an additional line of code, it is significantly faster to type a variable name, ie `workingData` than it is to type `importedData.data` every time you need to reference the data inside of your .CSV file.
 
+- audiowrite
+
+  The `audiowrite` function takes a function and generates an audio file. In order to get a good quality audio file, set your audio samplerate high.
+
+- audioread
+
+  The `audioread` function takes an audio file and returns a vector with a list of amplitudes, time, and the audio samplerate
+
 ### General programming functions
 
 Some general programming functions that can be found in other languages, maybe with different syntax but the general function is the same in all languages. These commands of course can be found in MATLAB and are very useful once things start to become more complicated.
