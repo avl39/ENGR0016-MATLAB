@@ -1,5 +1,60 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 28.3.24
+
+### Audiodevinfo
+
+- Parses the machine for audio drivers/device IDs
+- Creates a `struct` with two fields
+  - `input` field
+  - `output` structure
+    - has `name`, `DriverVersion` and `ID` fields
+
+### Sound
+
+- We hear frequencies (20Hz - 20kHz)
+- Modeled by periodic functions (sine, cosine, etc.)
+  - Periodic because they have 'periods'
+    - How long it takes for a function to arrive at the same location, typically a peak or trough (node and antinode, respectively)
+  - Frequency(f) is a function of the period(p)
+    - $f = \frac{p}{t}$ where f is the frequency of the function in Hertz, p is the period of the function in seconds, and t is the duration being measured
+
+### Modeling Sound
+
+- Sine functions
+  - Can be represented by $\pm a*sin(b(t+c))+d$
+    - a is the amplitude
+    - b controls the horizontal stretch(period)
+    - c controls the horizontal shift
+    - d controls the vertical shift
+  - Can also be represented by $sin(\omega t)$ where $\omega$ is the angular frequency
+    - $\omega$ is the angular frequency which can be calculated by $\omega = 2 \pi f$
+- If your sample rate and frequency are desynced you can have "random" data
+- Nyquist Critera $$f_{s} \ge 2f_{n}$$
+  Where $f_{s}$ is the frequency sample rate and $f_{n}$ is the highest frequency signal that can be measured
+
+### Writing sound with MATLAB
+
+- Use the `audiowrite` function after creating a time and periodic function
+  - The time vector has to have a point interval equal to your frequency sample rate
+
+            t = 0:1/fs:3;
+
+  - periodic function includes angular frequency
+
+            omega = 2*pi*frequency;
+            y = sin(omega.*t);
+
+### Reading sound with MATLAB
+
+- Use the `audioread` function with a .wav file
+  - setting `audioread` equal to a vector gives you a sample rate and the amplitude of each point in the audio file
+- To find the length of the audio file, take the length of the vector containing the amplitudes and divide it by the frequency sample rate
+  - this will result in a time vector with 1 more than the actual number of time vectors
+
+            [y,fs] = audioread('file.wav');
+            t = 0:1/fs:(length(y)-1)/fs;
+
 ## 26.3.24
 
 ### Homework Review Troubleshooting
