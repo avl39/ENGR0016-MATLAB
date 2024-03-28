@@ -23,19 +23,10 @@ end
 
 % Find the best fitting polynomial function and plot it
 [M, j] = max(rSquaredCompare); % Pull out the location(degree) of the polynomial with the best R^2 value
-if j == 1
-    text = [num2str(j),'st order polynomial with an R^2 value of ', num2str(rSquaredCompare(j))];
-    disp(text)
-elseif j == 2
-    text = [num2str(j),'nd order polynomial with an R^2 value of ', num2str(rSquaredCompare(j))];
-    disp(text)
-elseif j == 3
-    text = [num2str(j),'rd order polynomial with an R^2 value of ', num2str(rSquaredCompare(j))];
-    disp(text)
-elseif j > 3
-    text = [num2str(j),'th order polynomial with an R^2 value of ', num2str(rSquaredCompare(j))];
-    disp(text)
-end
+suffix = ['st','nd','rd''th'];
+text = [num2str(j),suffix(j), ' order polynomial with an R^2 value of ', num2str(rSquaredCompare(j))];
+disp(text)
+
 plot(x,y,'o', x, polyval(polyfit(x,y,j),x)) % Plot the imported data against the line of best fit
 legend('Imported Values', 'Polynomial line of best fit')
 xlabel(cheaders(1))
