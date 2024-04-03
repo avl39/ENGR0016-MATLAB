@@ -1,5 +1,89 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 2.4.24
+
+### Do Now - Writing Audio
+
+Write a script to generate a .wav file with two frequencies
+
+- Need to define `fs`
+  - Remember the Nyquist Critera
+    - $f_{s}\ge 2f_{n}$
+
+      Where $f_{s}$ is the samplerate and $f_{n}$ is the percieved sound
+
+- Need to define frequencies of the two sounds
+- Need to define a time vector, `t`
+
+        fs = 44100;
+        t = 0:1/fs:3;
+        f1 = 100;                 % Frequency 1 at 100Hz
+        f2 = 5000;                % Frequency 2 at 5000Hz
+        omega = 2*pi;             % Angular Frequency Constant
+        y1 = sin(omega*f1.*t);
+        y2 = sin(omega*f2.*t);
+        yHeard = 0.5.*y1+0.5.*y2;
+        audowrite('twoTone1005kHz',yHeard,fs)
+
+Import a .wav file into MATLAB and analyze it
+
+      [audio,fs] = audoread('dualtone.wav');
+      audio = audio';
+      t = 0:1/fs:length(audio-1)./fs;             % Could also use t=1/fs:1/fs:length(audio);
+
+### Fast Fourier Transform (`fft`)
+
+- Computes the Fast Fourier Transform of the argument
+- Can be used to clean up signals with noise
+  - Electronics noise
+  - Wind noise in recording
+
+### Example of `fft` usage
+
+    fs = 44100;
+    t = 0:1/fs:3;
+    f1 = 100;                 % Frequency 1 at 100Hz
+    f2 = 5000;                % Frequency 2 at 5000Hz
+    omega = 2*pi;             % Angular Frequency Constant
+    y1 = sin(omega*f1.*t);
+    y2 = sin(omega*f2.*t);
+    yHeard = 0.5.*y1+0.5.*y2;
+    audowrite('twoTone1005kHz',yHeard,fs)
+
+    L = length(y1)
+    Y1 = fft(y1);
+    P2 = abs(Y1/L);
+    P1 = P2(1:L/2+1);
+    P1(2:end-1) = 2*P1(2:end-1);
+
+    f = Fs/L*(0:(L/2));
+    plot(f,P1,"LineWidth",3)
+    title("Single-Sided Amplitude Spectrum of S(t)")
+    xlabel("f (Hz)")
+    ylabel("|P1(f)|")
+
+### How does fft work?
+
+- Any signal can be created by some combination of sine and cosine waves
+- $\sum_{n}a_{n}sin(f_{n}t)$
+  - Tries to fit different sine waves of different frequencies to match the measured wave
+  - Compares the simulated graph and the given graph
+  - The amplitude, $a_{n}$ associated with the graph defines the fit of the line
+    - The higher the value of $a_{n}$, the better fit the simulated graph
+    - $a_{n}$ is similar to an R^2 value in graphing
+    - The sum will iterate until $n$ is equal to half of your sample frequency, $f_{s}$.
+
+### Spectrogram function
+
+- Takes `fft`s for periods of time
+- Can be plotted as a *waterfall* plot
+  - 3 Dimensional plot
+  - Every peak is a Fourier Transform
+
+### Spectrogram and Instantaneous Frequency
+
+- Can be used to track changes in frequency over time
+
 ## 28.3.24
 
 ### Audiodevinfo
