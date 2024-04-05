@@ -1,5 +1,49 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 4.4.24
+
+### Do Now - Spectrogram example
+
+Generate an audio wave and create a spectrogram based off of the audio wave
+
+    fs = 44100;
+    t = 0:1/fs:3;
+    y = 0.5*sin(2*pi*1000*t)+0.5*sin(2*pi*2500*t);
+    spectrogram(y,100,80,100,fs,'yaxis') % Pulled from documentation
+
+Spectrograms show frequenccy relative to time
+
+  Fast Fourier Transforms show frequency irrelevant to time
+
+### Do Now part 2: Spectrogram with changing frequency
+
+Generate a spectrogram of an audio wave that changes frequency over time without using chirp
+
+- Since frequency changes over time, generate a vector $f$ that is a function of time
+
+Example Code:
+
+    fs = 44100;
+    t = 0:1/fs:3;
+    y = 0.5.*sin(2*pi*1000*t)+0.5.*sin(2*pi*1000.*t.^2);
+    spectrogram(y,256,128,100,fs,'yaxis')
+
+### Uh
+
+- A perfect sine wave has a fourier transform of a perfect single line
+  - The spectrogram is a single horizontal line at amplitude $A$
+- A perfect pulse has a fourier transform of all frequencies with equal amplitude
+  - The spectrogram is lots of lines
+
+### Working with `spectrogram`
+
+- First argument is the width of the window
+  - The number of points displayed in each `fft` sample
+  - Wider windows result in more artifacting for changing functions
+- Second argument is the amount of overlap between each sample
+  - The more overlap results in a smoother looking graph
+  - More overlap also results in more uncertainty in interpreting the graph
+
 ## 2.4.24
 
 ### Do Now - Writing Audio

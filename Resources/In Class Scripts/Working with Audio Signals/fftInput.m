@@ -22,3 +22,7 @@ plot(f,P1,"LineWidth", 3)
 title("Tingle-Sided Amplitude Spectrum of S(t)")
 xlabel("f (Hz)")
 ylabel("|P1(f)|")
+
+figure
+
+spectrogram(f,length(f)-1,length(f)-1,length(f))
