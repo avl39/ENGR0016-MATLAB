@@ -1,5 +1,18 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 4.9.24
+
+### Do Now - Analyzing an FFT plots and Spectrograms
+
+#### FFT Plots
+
+- A larger spike represents a more prevalent frequency
+- More noise/messiness in the fft represents more present frequencies
+
+#### Spectrograms
+
+- A frequency that changes over time will be represented in a spectrogram
+
 ## 4.4.24
 
 ### Do Now - Spectrogram example
