@@ -16,7 +16,7 @@ i = 1;
 
 file(i) = input('Enter the name of your audio file within single apostrophies as [FILENAME.ext] ');
 filename(i) = num2str(file(i));
-[audio(i),fs(i)] = audioread(file(1));
+[audio(i),fs(i)] = audioread(file(i));
 
 while bool == "Y"
     bool = input('Would you like to read another file? Please input Y for yes or N for no. ', "s");
