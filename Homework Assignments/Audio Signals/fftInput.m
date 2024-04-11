@@ -7,7 +7,7 @@ clc
 filename = input('Enter the name of your audiofile within single apostrophies as [FILENAME.ext] ');
 [audio, fs] = audioread(filename);
 audio = audio';
-t = 0:1/fs:length(audio-1)./fs;
+t = 0:1/fs:length(audio)-1/fs;
 
 % Fast Fourier Transform (Documentation)
 
