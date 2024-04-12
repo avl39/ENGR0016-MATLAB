@@ -244,7 +244,7 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
     `&&` is the same as the AND operator. It compares 2 arguments located on either side of the operator and compares them. The `&&` operator will only output the boolean value `TRUE` if both arguments are true and will output the boolean value `FALSE` if one or both of the arguments is false.
   - ||
 
-    `||` is the same as the OR operator. It compares 2 arguments located on either side of the operator and compares them. The `~` operator will output the boolean value `TRUE` if one of the arguments is true and will only output `FALSE` if both arguments are false.
+    `||` is the same as the OR operator. It compares 2 arguments located on either side of the operator and compares them. The `||` operator will output the boolean value `TRUE` if one of the arguments is true and will only output `FALSE` if both arguments are false.
 
   - ~
 
@@ -253,14 +253,6 @@ The meat and potatoes of this document, so to speak. Again, this is not an exhau
   - XOR
 
     The `XOR` operator takes two arguments on either side and compares them. It will output a boolean value of `TRUE` if and only if the two arguments have different values ie if the argument on the left is `TRUE` and the right is `FALSE` or vice versa. However, if both of the arguments have the same boolean value, ie both are `TRUE` or both are `FALSE`, the `XOR` operator will output a value of `FALSE`.
-
-- polyfit
-
-  - The `polyfit` function calculates a best fitting polynomial of a specified degree. Helpful when used in conjunction with the `polyval` function.
-
-- polyval
-
-  - The `polyval` function evaluates a polynomial at every specified point. Can be use in conjunction with the polyfit function to find and evaluate a line of best fit.
 
 - polyfit
 

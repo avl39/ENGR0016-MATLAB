@@ -1,5 +1,67 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 4.11.24
+
+### Final Project Discussion
+
+- Partially data driven
+  - Use MATLAB to analyze data relating to the engineering problem
+  - Could be extrapolation, interpolation, curve fitting
+- Partially theory driven
+  - Solutions to pertainent equations that should be analyzed
+- Written report
+
+### Exam 2 Review
+
+3 General Categories
+
+1. Time-based Signal Analysis
+
+    - Sample Rate Frequency
+      - How many times per unit time a sample is taken
+    - Nyquist Critera
+      - The sample rate frequency must be greater than or equal to double of the highest frequency recorded
+      - $f_{s}\ge 2*f_{r}$
+      - Show what a sample that does not meet the Nyquist critera looks like
+    - Amplitude-related words
+      - Bit depth/resolution
+        - How much data can be stored to what resolution
+        - 8 bit goes up to 8 figures while a 32 bit resolution can go up to 32 figures
+        - More bits is more precise, but there is more memory load
+      - Minimum bit depth for base-10 counting is 4
+        - Need 4 bits to represent all numbers through 1-10
+        - Can be calculated by the function $d = p^n$ where $d$ is the number of outputs, $p$ is the number of possible positions (2), and $n$ is the bit depth.
+          - We want to represent 10 different digits so $d=10$ and transistors have two possible postions so $p=2$
+          - $10=2^n \Rightarrow n = 3.32 \approx 4 $
+          - We can't round down because we don't get our last value so we need to round up to the nearest whole number of bits
+    - FFTs
+      - Be able to analyze an fft
+        - Read what the fft means
+      - Create a signal based off of an fft
+      - Add noise based off of an fft
+
+2. Importing data
+
+    - Be able to import data into MATLAB
+      - Be able to analyze the data
+    - Curve fitting to data
+      - Plot data
+      - `polyfit` and `polyval` functions
+      - Plot data with confidence intervals
+      - Be able to adapt documentation to examples
+
+3. General Script writing
+
+    - Control Structures
+      - `for`, `while`, `if`, `ifelse`
+      - How to build/analyze control strucutres using boolean logic
+    - Boolean operators/logic
+    - General functions
+      - see `TermMasterList`
+    - When to use each variable type
+      - When to use scalars, vectors, arrays, cell arrays
+      - Why do we use each one
+
 ## 4.9.24
 
 ### Do Now - Analyzing an FFT plots and Spectrograms
