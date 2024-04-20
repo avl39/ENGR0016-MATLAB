@@ -1,5 +1,130 @@
 # Avery Law ENGR 0016: Intro to Engineering Computing with Dr. Matt, semi-professional skiier
 
+## 4.18.24
+
+### Exam Part 1 Review
+
+1. Time-based signal vs signal depth analysis
+
+    Time based signal analysis is analysis over a period of time
+
+    Signal-depth analysis is analysis of a single point
+
+2. Analog sample with inadequate bitrate
+
+    An inadequate bitrate results in a stepwise graph
+
+    Any analog to digital converter will have this stepwise artifacting at a high enough resolution
+
+3. Nyquist Criterion -- Adequate sample rate and inadequate sample rate
+
+    Nyquist Critera requires for your sample rate to be greater than or equal to two of your highest frequency signal
+
+    $f_{s} \ge 2f_{h}$
+
+4. Least Significant Bit
+
+    $LSB = \frac{5v}{2^n}$, $n=10$, $P(v)=\frac{2v}{1psi}$
+
+    $LSB = \frac{5}{2^{10}} = 0.0049v$
+
+    $\frac{0.0049}{\frac{0.2v}{1psi}}$
+
+### Exam Part 2 Review
+
+- Use of `randn` to generate noise and apply it to the data
+  - Import data into MATLAB
+  - Generate noise using `randn`
+
+            var = importdata('filename');
+            x = var.data(:,1);
+            y = var.data(:,2);
+            yrand = y+randn(26,1);
+            [p,s] = polyfit(x,yrand,3);
+            [y_fit,delta] = polyval(p,x,s);
+            plot(x,yrand,'bo')
+            hold on
+            plot(x,yfit,'r')
+            plot(x,yfit+2*delta,'m--',x,yfit-2*delta,'m--')
+
+  - Plot the function with lines of best fit and confidence intervals
+
+### Syllabus Review
+
+- Exams are done, participation and attendance are done
+- Final project and final are still to be covered
+  - If the final is higher than one of the grades for another exam, the final will replace that exam grade
+  - Must take final exam
+  - Final exam will not have a paper portion
+  - Final from 12-2
+  - Final project is due on Friday
+- Complete all assignments even if you aren't certain on them
+
+### Symbolic Solvers and Functions
+
+- `syms`
+  - Used to create a symbol type variable
+    - Contains no data
+    - Symbols are treated like an object that can be used inside of an equation
+    - Can be thought of as a mathematical variable (think $x$ inside of $2x^4-3x^2+x-3$)
+  - Can be used to make expressions
+
+            syms a b c x
+            solve(a*x^2+b*x+c)
+            
+            ans = 
+
+            (-b + sqrt(b^2  -   4*a*c)) /2*a
+            (-b - sqrt(b^2  -   4*a*c)) /2*a
+
+  - Create equations and solve for values using symbolic expressions
+
+            e2 = 5*x^2+6*x+3 == 10;
+            solve(e2);
+
+  - Solve systems of equations
+
+            syms x y z
+            e1 = x^2+3*y == 2;
+            e2 = z^3-x == 4;
+            e3 = y^2-sqrt(z) == -1;
+            solve(e1,e2,e3)
+
+- `double`
+  - Turns a numerical answer into decimal form
+
+- Using derivatives
+  - If we have $\Delta d$ = 100 miles and $\Delta t$ = 1 hr,
+    - Velocity is $\frac{\Delta d}{\Delta t}$, or $v = \frac{dx}{dt}$
+    - Acceleration is $\frac{\Delta v}{\Delta t}$, or $a= \frac{dv}{dt}$
+      - Since acceleration is the derivative of velocity, velocity can be rewritten as the derivative of the derivative of distance with respect to time:
+
+        $a = \frac{dv}{dt} = \frac{d^2x}{dt^2}$
+  
+            syms t
+            dist = 20+20*sin(pi*(t-10)/20);
+            vel = diff(dist,t);
+            accel = diff(vel,t);
+
+  - The last line for the variable `accel` can also be writen as
+
+            accel = diff(vel,t,2);
+
+- Using Antiderivatives (integrals)
+  - Antiderivates are just the opposite of derivatives (anti - opposite, opposite derivative)
+    - Velocity can be written in terms of acceleration: $v = \int a dt$
+    - Displacement can be written in terms of velocity: $x = \int v dt$
+
+            syms t
+            a = t^3*sin(t);
+            v = int(a,t);
+            x = int(v,t);
+
+            int(a,t,-3,4);
+
+- fplot
+  - Can plot symbolic functions
+
 ## 4.11.24
 
 ### Final Project Discussion
