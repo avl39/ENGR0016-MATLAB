@@ -1,8 +1,6 @@
 % Avery Law
-% ENGR 0016 Intro to Engineering Computing Final Project
-% Impact absorption comparison/bounce script
-
-% clear workspace
+% ENGR 0016: Intro to Engineering Computing Final Project
+% Impact Absorption Comparison Test/Bounce Script
 
 clear
 clc
@@ -37,48 +35,25 @@ h = input('Please input the height that you would like your mass to be dropped f
 duration = input('Please input the duration of the impact in seconds: ');
 t = input('How many seconds would you like to simulate? ');
 
+t = 0:0.001:t; % Time Vector
+V0 = 0; % Intial Velocity at time 0
+
 % Calculations
 
-vf = sqrt(2*g*h);
-vi = 0;
-timetotal = vf/g;
-displacement = h;
-forceExperienced = vf/t; % Force Experienced during impact
-impacts = 0;
-t = 0:0.01:t;
-bounce = 0;
-timer = 0;
-
-% Put inside of a loop iterating over some period of time, idk how long to model it for, figure it out (Maybe have the user declare it?)
-
 for i = 1:length(t)
-    if i == 1
-        V0 = 0;
-        x(i) = displacement;
-    elseif bounce >=1
-        x(i) = V0*t(i)-0.5*g*timer^2;
-        if x(i)<0
-            Vf = sqrt(V0^2+2*g*x(i-1));
-            V0 = sqrt(m*Vf^2-(100-0.01*vertReb(opSec)*m*Vf^2)/m);
-            bounce = bounce + 1;
-            timer = timer + 0.001;
-        end
-    else
-        x(i) =displacement + V0*t(i)-0.5*g*t(i)^2;
-        if x(i)<0
-            Vf = sqrt(V0^2+2*g*x(i-1));
-            V0 = sqrt(m*Vf^2-(100-0.01*vertReb(opSec)*m*Vf^2)/m);
-            bounce = bounce + 1;
-            timer = i;
-        end
-    end 
+    x(i) = V0*(i*0.001)-0.5*g*(i*0.001)^2+h;
+    if x(i) <=0
+        x(i) = 0;
+        forceExp = m*g;
+        V0 = forceExp/m*0.5*duration;
+    end
 end
 
+line = animatedline;
+axis([-0.3*max(t),0.3*t, -1, h])
 
-% Animate motion
-% h = animatedline;
-
-
-% TODO
-% Displacement vs time vector
-% Animation of displacement vs time vector
+for k = 1:length(x)
+    addpoints(line, t(k),x(k));
+    axis([-0.3*max(t)+k, 0.3*max(t)+k, -1, h])
+    drawnow
+end
