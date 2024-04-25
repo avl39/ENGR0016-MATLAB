@@ -37,8 +37,8 @@ rho = linspace(1.112,1.225,1001);   % Density of air between 0m to 1000m
 
 for i = 1:length(rho)
     for j = 1:length(rho)
-        power(j) = 0.5*rho(j)*a*v(i)^3;
-        energy(j,i) = power(j)*(0.01*Cp)*(0.01*Cf)*t;
+        power(j,i) = 0.5*rho(j)*a*v(i)^3;
+        energy(j,i) = power(j,i)*(0.01*Cp)*(0.01*Cf)*t;
     end
 end
 
