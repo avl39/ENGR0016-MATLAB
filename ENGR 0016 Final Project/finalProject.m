@@ -23,7 +23,7 @@ if opSec == 5
     disp(vertReb1);
     disp(vertReb2);
     vertReb(5) = input('Please input the value of the resillience by vertical rebound of your material as a value between 1 and 100: ');
-    materials(5) = input('Please enter the name of your material');
+    materials(5) = input('Please enter the name of your material: ', "s");
 end
 
 m = input('Please input the mass of your object in kilograms: ');
@@ -37,23 +37,40 @@ t = input('How many seconds would you like to simulate? ');
 
 t = 0:0.001:t; % Time Vector
 V0 = 0; % Intial Velocity at time 0
-
+time = 0; % Time counter for loop
+counter = 0;
 % Calculations
 
 for i = 1:length(t)
-    x(i) = V0*(i*0.001)-0.5*g*(i*0.001)^2+h;
-    if x(i) <=0
-        x(i) = 0;
-        forceExp = m*g;
-        V0 = forceExp/m*0.5*duration;
+    if counter == 0
+        x(i) = V0*(time)-0.5*g*(time)^2+h;
+        if x(i) <=0
+            x(i) = 0;
+            forceExp = m*g;
+            Vi = sqrt(2*g*(0+x(i)));
+            V0 = sqrt((2*(0.01*vertReb(opSec)*0.5*m*Vi^2))/m);
+            time = 0;
+            counter = 1;
+        end
+    else
+        x(i) = V0*time-0.5*g*(time)^2+h;
+        if x(i) <=0
+            x(i) = 0;
+            Vi = sqrt(2*g*(x(i-1)));
+            forceExp = m*(Vi/duration);
+            V0 = sqrt((2*(0.01*vertReb(opSec)*0.5*m*Vi^2))/m);
+            time = 0;
+        end
     end
+    time = time+0.001;
 end
 
-% line = animatedline;
-% axis([-0.3*max(t),0.3*t, -1, h])
+figure
+line = animatedline('Marker','o');
 
-% for k = 1:length(x)
-%     addpoints(line, t(k),x(k));
-%     axis([-0.3*max(t)+k, 0.3*max(t)+k, -1, h])
-%     drawnow
-% end
+for k = 1:length(x)
+    addpoints(line, t(k),x(k));
+    axis([-0.3*max(t)+0.01*k 0.3*max(t)+0.01*k 0 h])
+    drawnow limitrate
+end
+drawnow
