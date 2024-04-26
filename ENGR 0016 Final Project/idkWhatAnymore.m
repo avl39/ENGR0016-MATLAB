@@ -27,6 +27,9 @@ Cf = input('Please input the capacity factor of your wind turbine as a value bet
 
 disp(aInfo1)
 a = input('Please input the swept area of your turbines in m^2: ');
+velocity = input('Please input the average windspeed of your area in m/s: ');
+disp('Please input the density of air at your altitude in kg/m^3.')
+density = input('If left blank, the default value will be the 1.225 kg/m^3 ');
 t = input('How many hours would you like to simulate the output for? ');
 
 
@@ -50,8 +53,13 @@ for k = 1:length(rho)
     end
 end
 
+powerFixed = 0.5*density*a*velocity^3;
+energyfixed = powerFixed*0.01*Cp*0.01*Cf*t;
+
+disp(['With the selected wind speed, your turbine has a theoretical output of ', num2str(powerFixed), 'kW.'])
+disp(['For the selected period of time, your turbine has an actual output of', num2str(energyfixed), 'kWh.'])
 energySum = mean(energy(1))/(t*10^3);
-disp(['The average energy produced by your wind turbine at sea level was ', num2str(energySum), ' kWh'])
+disp(['With randomized airspeed, the average energy produced by your wind turbine at sea level was ', num2str(energySum), ' kWh'])
 
 figure
 pcolor(rho, windspeed,output)
